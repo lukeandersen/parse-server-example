@@ -28,7 +28,7 @@ var api = new ParseServer({
 
 
 // Parse dashboard
-// var allowInsecureHTTP = false;
+var allowInsecureHTTP = false;
 var dashboard = new ParseDashboard({
     'apps': [{
         'serverURL': process.env.SERVER_URL || 'http://localhost:1337/parse',
@@ -43,8 +43,9 @@ var dashboard = new ParseDashboard({
         'user':'user',
         'pass':'password'
     }],
-    'useEncryptedPasswords': false
-});
+    'useEncryptedPasswords': false,
+    'trustProxy': 1
+}, allowInsecureHTTP);
 
 var app = express();
 
